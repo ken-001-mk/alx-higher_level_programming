@@ -5,7 +5,7 @@ script that lists all states with a name starting with N (upper N) from the data
 """
 
 import MySQLdb
-import sys
+from sys import argv
 
 if __name__ == '__main__':
 
@@ -18,6 +18,7 @@ if __name__ == '__main__':
 	rows = cursor.fetchall()
 
 	for row in rows:
+	    if row[1][0] == 'N'
 	   print(row)
 
 	cursor.close()
