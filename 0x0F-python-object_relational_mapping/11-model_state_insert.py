@@ -4,7 +4,8 @@
 Adds the State object "Louisiana" to the database hbtn_0e_6_usa using SQLAlchemy
 """
 
-import sys
+import sqlalchemy
+from sys import argv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from model_state import Base, State

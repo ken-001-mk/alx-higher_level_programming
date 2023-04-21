@@ -4,7 +4,8 @@
  and an instance Base = declarative_base()
 """
 
-m sqlalchemy import create_engine, Column, Integer, String
+import sqlalchemy
+from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 
 engine = create_engine('mysql+mysqlconnector://root:password@localhost:3306/database_name')

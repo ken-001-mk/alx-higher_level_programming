@@ -4,29 +4,16 @@
 table of hbtn_0e_0_usa where name matches the argument, and is also safe from MySQL injections"""
 
 import MySQLdb
-import sys
+from sys import argv
 
 if __name__ == "__main__":
-
-    if len(sys.argv) != 5:
-        print("Usage: {} username password database_name state_name".format(sys.argv[0]))
-        exit(1)
-
-
-    username = sys.argv[1]
-    password = sys.argv[2]
-    db_name = sys.argv[3]
-    state_name = sys.argv[4]
-
-    db = MySQLdb.connect(host="localhost", port=3306, user=username, passwd=password, db=db_name)
-    cur = db.cursor()
-
-
-    cur.execute("SELECT * FROM states WHERE name=%s ORDER BY id ASC", (state_name,
-
-    for row in cur.fetchall():
+    db = MySQLdb.connect(host="localhost", port=3306, user=argv[1],
+                         passwd=argv[2], db=argv[3], charset="utf8")
+    cursor = db.cursor()
+    cursor.execute("SELECT * FROM states WHERE name LIKE %s ORDER BY id ASC",
+                   (argv[4],))
+    rows = cursor.fetchall()
+    for row in rows:
         print(row)
-
-
-    cur.close()
+    cursor.close()
     db.close()
