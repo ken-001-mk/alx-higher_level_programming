@@ -1,14 +1,10 @@
 #!/usr/bin/node
 
-function secBiggestInt (args) {
-  if (process.args.length <= 3) {
-    return 0;
-  } else {
-    const intList = process.args.map(Number)
-	.slice(2, process.args.length)
-	.sort((i, j) => j - i);
-    return sortedList[2];
-  }
+if (process.argv.length <= 3) {
+  console.log(0);
+} else {
+  const args = process.argv.map(Number)
+    .slice(2, process.argv.length)
+    .sort((a, b) => a - b);
+  console.log(args[args.length - 2]);
 }
-
-console.log(secBiggestInt(process.argv.slice(3)));
