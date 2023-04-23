@@ -1,5 +1,3 @@
 #!/usr/bin/node
 
-console.log('Python is fun');
-console.log('HBTN is undefined');
-console.log('undefined is undefined');
+console.log(`${process.argv[3]} is ${process.argv[4]}`);
