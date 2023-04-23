@@ -4,15 +4,14 @@
  and an instance Base = declarative_base()
 """
 
-import sqlalchemy
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
-
-engine = create_engine('mysql+mysqlconnector://root:password@localhost:3306/database_name')
 
 Base = declarative_base()
 
 class State(Base):
-    __tablename__ = 'states'
-    id = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
+    """Represents a state for a MySQL database."""
+
+    __tablename__ = "states"
+    id = Column(Integer, primary_key=True)
     name = Column(String(128), nullable=False)
