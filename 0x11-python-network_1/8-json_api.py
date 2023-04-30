@@ -6,19 +6,16 @@ to http://0.0.0.0:5000/search_user with the letter as a parameter.
 import requests
 import sys
 
-if __name__ "__main__":
-    if (sys.argv) == 1:
-        q = ""
-    else:
-        q = sys.argv[1]
-    url = "htpp://0.0.0.0:5000/search_user"
-    response = requests.post(url, data={'q': q})
+if __name__ == "__main__":
+    a = "" if len(sys.argv) == 1 else sys.argv[1]
+    payload = {"q": a}
+
+    response = requests.post("http://0.0.0.0:5000/search_user", data=payload)
     try:
-        response_json = response.json()
-        if response_json:
-            print("[{}] {}".format(response_json['id'],
-                                   response_json["name"]))
-        else:
+        response = response.json()
+        if response == {}:
             print("No result")
+        else:
+            print("[{}] {}".format(response.get("id"), response.get("name")))
     except ValueError:
-        print("Not a valid Json)
+        print("Not a valid JSON")
